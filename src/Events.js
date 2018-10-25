@@ -11,7 +11,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
-import { DatePicker } from 'antd';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+ 
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 
@@ -86,10 +89,10 @@ const styles = theme => ({
         dept:0,
         course:0,
         labelWidth: 0,
-        date : '',
         eventName: '',
         eventType:'',
         description:'',
+        happeningOn: moment()
       };
       handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -103,8 +106,10 @@ const styles = theme => ({
       handleChange4 =  description=>event => {
         this.setState({ [description]: event.target.value, });
       };
-      handleChange3 = date=>event => {
-        this.setState({ [date]: event.target.value, });
+      handleChange5 = (date)=> {
+        this.setState({
+          happeningOn: date
+        });
       };
 
       
@@ -165,6 +170,16 @@ const styles = theme => ({
               <FormHelperText>Please select course</FormHelperText>
             </FormControl>
             <br></br><br></br><br></br><br></br><br></br><br></br>
+               
+            <font color="#563947">Happening on</font><br></br>
+            <br></br>
+            <DatePicker
+                selected={this.state.startDate}
+                onChange={this.handleChange5}
+                showTimeSelect
+                dateFormat="DD/MM/YYYY hh:mm A"
+                />
+                <br></br><br></br><br></br>
 
         <TextField
           id="eventName"

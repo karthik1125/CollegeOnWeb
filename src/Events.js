@@ -174,7 +174,7 @@ const styles = theme => ({
             <font color="#563947">Happening on</font><br></br>
             <br></br>
             <DatePicker
-                selected={this.state.startDate}
+                selected={this.state.happeningOn}
                 onChange={this.handleChange5}
                 showTimeSelect
                 dateFormat="DD/MM/YYYY hh:mm A"
